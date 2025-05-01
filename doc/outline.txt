@@ -1,0 +1,62 @@
+project-root/
+├── api/                   # API 路由和控制器
+│   ├── v1/                # 版本 1 的 API
+│   │   ├── handlers/      # 处理请求的控制器
+│   │   │   ├── user.go
+│   │   │   ├── product.go
+│   │   │   └── ...
+│   │   └── routes.go      # 路由配置
+│   └── routes.go          # 总路由配置
+├── config/                # 配置文件
+│   ├── config.go          # 配置结构体和初始化
+│   └── config.yaml        # 配置参数
+├── internal/
+│   ├── app/               # 应用核心逻辑
+│   │   ├── service/       # 业务逻辑层
+│   │   │   ├── user_service.go
+│   │   │   ├── product_service.go
+│   │   │   └── ...
+│   │   ├── repository/    # 数据访问层
+│   │   │   ├── user_repo.go
+│   │   │   ├── product_repo.go
+│   │   │   └── ...
+│   │   ├── constant/
+│   │   ├   ├── AiModel.go        
+│   │   ├── model/         # 数据模型
+│   │   │   ├── user.go
+│   │   │   ├── product.go
+│   │   │   └── ...
+│   │   ├── ai/            # langchaingo 相关逻辑
+│   │   │   └── chat.go
+│   │   └── auth/          # Sa-Token 鉴权相关
+│   │       └── auth.go
+│   ├── middleware/        # Gin 中间件
+│   │   ├── logging.go
+│   │   ├── recovery.go
+│   │   └── auth.go
+│   ├── queue/             # RabbitMQ 相关
+│   │   ├── producer.go
+│   │   └── consumer.go
+│   ├── storage/           # 存储相关
+│   │   ├── mongodb.go
+│   │   ├── redis.go
+│   │   ├── mysql.go
+│   │   └── minio.go
+│   └── utils/             # 工具函数
+│       ├── validator.go
+│       └── ...
+├── pkg/                   # 可复用的库
+├── scripts/               # 脚本文件
+│   ├── migrate.sh
+│   └── ...
+├── static/                # 静态文件
+│   ├── css/
+│   ├── js/
+│   └── images/
+├── templates/             # HTML 模板
+├── tests/                 # 测试文件
+│   ├── unit/              # 单元测试
+│   └── integration/       # 集成测试
+├── go.mod
+├── go.sum
+└── main.go                # 项目入口文件
