@@ -1,62 +1,93 @@
-project-root/
-├── api/                   # API 路由和控制器
-│   ├── v1/                # 版本 1 的 API
-│   │   ├── handlers/      # 处理请求的控制器
-│   │   │   ├── user.go
-│   │   │   ├── product.go
-│   │   │   └── ...
-│   │   └── routes.go      # 路由配置
-│   └── routes.go          # 总路由配置
+drawsee/
+├── annotation/            # 注解相关
+│   ├── PromptParam.go         # 提示参数相关，723 字节
+│   ├── PromptParam_test.go    # 提示参数测试，1110 字节
+│   ├── PromptResorce_test.go  # 提示资源测试，1103 字节
+│   ├── PromptResource.go      # 提示资源相关，641 字节
+│   ├── ValueSet_test.go       # 值集合测试，1082 字节
+│   └── ValuSet.go             # 值集合相关，495 字节
 ├── config/                # 配置文件
-│   ├── config.go          # 配置结构体和初始化
-│   └── config.yaml        # 配置参数
-├── internal/
-│   ├── app/               # 应用核心逻辑
-│   │   ├── service/       # 业务逻辑层
-│   │   │   ├── user_service.go
-│   │   │   ├── product_service.go
-│   │   │   └── ...
-│   │   ├── repository/    # 数据访问层
-│   │   │   ├── user_repo.go
-│   │   │   ├── product_repo.go
-│   │   │   └── ...
-│   │   ├── constant/
-│   │   ├   ├── AiModel.go        
-│   │   ├── model/         # 数据模型
-│   │   │   ├── user.go
-│   │   │   ├── product.go
-│   │   │   └── ...
-│   │   ├── ai/            # langchaingo 相关逻辑
-│   │   │   └── chat.go
-│   │   └── auth/          # Sa-Token 鉴权相关
-│   │       └── auth.go
-│   ├── middleware/        # Gin 中间件
-│   │   ├── logging.go
-│   │   ├── recovery.go
-│   │   └── auth.go
-│   ├── queue/             # RabbitMQ 相关
-│   │   ├── producer.go
-│   │   └── consumer.go
-│   ├── storage/           # 存储相关
-│   │   ├── mongodb.go
-│   │   ├── redis.go
-│   │   ├── mysql.go
-│   │   └── minio.go
-│   └── utils/             # 工具函数
-│       ├── validator.go
-│       └── ...
-├── pkg/                   # 可复用的库
-├── scripts/               # 脚本文件
-│   ├── migrate.sh
-│   └── ...
-├── static/                # 静态文件
-│   ├── css/
-│   ├── js/
-│   └── images/
-├── templates/             # HTML 模板
-├── tests/                 # 测试文件
-│   ├── unit/              # 单元测试
-│   └── integration/       # 集成测试
-├── go.mod
-├── go.sum
-└── main.go                # 项目入口文件
+│   ├── CacheConfig.go         # 缓存配置，1418 字节
+│   ├── config.yaml            # 配置参数，548 字节
+│   ├── CorsConfig.go          # CORS 配置，1099 字节
+│   ├── LangchainConfig.go     # Langchain 配置，2569 字节
+│   ├── Minio.go               # Minio 存储配置，1715 字节
+│   ├── minio_config_test.go   # Minio 配置测试，919 字节
+│   ├── PromptConfig.go        # 提示配置，2073 字节
+│   ├── promptconfig_test.go   # 提示配置测试，879 字节
+│   ├── rabbit.go              # RabbitMQ 相关实现，3495 字节
+│   ├── RabbitConfig.go        # RabbitMQ 配置，1243 字节
+│   ├── rabbit_config_test.go  # RabbitMQ 配置测试，1556 字节
+│   ├── rabbit_test.go         # RabbitMQ 测试，1464 字节
+│   ├── RestClientConfig.go    #  REST 客户端配置，796 字节
+│   ├── RestClientConfig_test.go # REST 客户端配置测试，1378 字节
+│   ├── SaTokenConfig.go       # Sa - Token 鉴权配置，731 字节
+│   └── SaTokenConfig_test.go  # Sa - Token 鉴权配置测试，746 字节
+├── constant/              # 常量定义
+│   ├── AiModel.go                  # AI 模型相关常量，224 字节
+│   ├── AiTaskLimit.go              # AI 任务限制相关常量，120 字节
+│   ├── AiTaskMessageType.go        # AI 任务消息类型相关常量，402 字节
+│   ├── AiTaskStasus.go             # AI 任务状态相关常量，138 字节
+│   ├── AiTaskType.go               # AI 任务类型相关常量，900 字节
+│   ├── ApiUrl.go                   # API 地址相关常量，269 字节
+│   ├── KnowledgeResourceType.go    # 知识资源类型相关常量，256 字节
+│   ├── KnowledgeSubject.go         # 知识主题相关常量，172 字节
+│   ├── MinioObjectPath.go          # Minio 对象路径相关常量，154 字节
+│   ├── NodeSubType.go              # 节点子类型相关常量，1024 字节
+│   ├── NodeTitle.go                # 节点标题相关常量，1226 字节
+│   ├── NodeType.go                 # 节点类型相关常量，516 字节
+│   ├── RedisKey.go                 # Redis 键相关常量，1119 字节
+│   ├── TaskType.go                 # 任务类型相关常量，105 字节
+│   └── UserRole.go                 # 用户角色相关常量，159 字节
+├── control/               # 控制器层
+│   ├── AdminController.go         # 管理员控制器，5842 字节
+│   ├── AdminController_test.go    # 管理员控制器测试，2540 字节
+│   ├── FlowController.go          # 流程控制器，6809 字节
+│   └── FlowController_test.go     # 流程控制器测试，4087 字节
+├── doc/                   # 文档
+│   ├── drawsee.sql          # 数据库 SQL 脚本，7067 字节
+│   ├── kimi               # 相关文件，238 字节
+│   ├── outline.txt          # 项目大纲，4186 字节
+│   └── Trae               # 相关文件，60 字节
+├── exception/             # 异常处理
+│   ├── ApiError.go              # API 错误相关，4024 字节
+│   ├── ApiError_test.go         # API 错误测试，2413 字节
+│   ├── ApiException.go          # API 异常相关，719 字节
+│   └── ApiException_test.go     # API 异常测试，3442 字节
+├── handler/               # 全局处理
+│   ├── GlobalExceptionHandler.go     # 全局异常处理，1718 字节
+│   ├── GlobalExceptionHandler_test.go # 全局异常处理测试，3308 字节
+│   ├── GlobalResponseHandler.go      # 全局响应处理，2548 字节
+│   └── GlobalResponseHandler_test.go # 全局响应处理测试，1731 字节
+├── interfaces/            # 接口定义
+│   └── ai_task_worker.go  # AI 任务工作者接口，248 字节
+├── mapper/                # 数据访问层
+│   ├── AdminMapper.go               # 管理员数据访问接口，1315 字节
+│   ├── AdminMapper_test.go          # 管理员数据访问接口测试，981 字节
+│   ├── AiTaskMapper.go              # AI 任务数据访问接口，8391 字节
+│   ├── AiTaskMapper_test.go         # AI 任务数据访问接口测试，3347 字节
+│   ├── ConversationMapper.go        # 会话数据访问接口，5322 字节
+│   ├── ConversationMapper_test.go   # 会话数据访问接口测试，2345 字节
+│   ├── InvitationCodeMapper.go      # 邀请码数据访问接口，2248 字节
+│   ├── InvitationCodeMapper_test.go # 邀请码数据访问接口测试，945 字节
+│   ├── NodeMapper.go                # 节点数据访问接口，2353 字节
+│   ├── NodeMapper_test.go           # 节点数据访问接口测试，2042 字节
+│   ├── UserMapper.go                # 用户数据访问接口，5586 字节
+│   └── UserMapper_test.go           # 用户数据访问接口测试，2298 字节
+├── pojo/                  # 数据对象
+│   ├── dto/               # 数据传输对象
+│   ├── entity/            # 实体对象
+│   ├── mongo/             # MongoDB 相关对象
+│   ├── result.go          # 结果对象，955 字节
+│   └── result_test.go     # 结果对象测试，3171 字节
+├── resources/             # 资源文件
+│   └── prompt/            # 提示资源
+├── utils/                 # 工具函数
+│   ├── ValueSetValidar.go         # 值集合验证工具，715 字节
+│   └── ValueSetValidar_test.go    # 值集合验证工具测试，665 字节
+├── worker/                # 工作相关
+│   └── ai_task_worker.go  # AI 任务工作者，404 字节
+├── config.yaml            # 项目配置参数，868 字节
+├── go.mod                 # Go 模块文件，3074 字节
+├── go.sum                 # Go 模块依赖校验文件，17496 字节
+└── main.go                # 项目入口文件，4641 字节

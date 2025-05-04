@@ -1,4 +1,15 @@
 drawsee:
+  mysql:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    host: 42.193.107.127
+    port: 3246
+    username: root
+    password: cyf829CMT917
+  minio:
+    endpoint: http://42.193.107.127:9046
+    accessKey: XOKQYoPekwnGasqY9cB3
+    secretKey: Z65Sy7T2pegQFj5A7ZnRzCFeJdTBV2O4qj5GQkH3
+    bucketName: drawsee
   models:
     doubao:
       base_url: "https://ark.cn-beijing.volces.com/api/v3"
